@@ -1,0 +1,6 @@
+applicationType: function
+defaultPackage: com.haritsaini
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [app-name, aws-lambda, aws-lambda-events-serde, aws-lambda-handler-function, aws-v2-sdk, dynamodb, gradle, http-client-test, java, junit, logback, micronaut-build, properties, readme, serialization-jackson, shade, snapstart, validation, x86]
