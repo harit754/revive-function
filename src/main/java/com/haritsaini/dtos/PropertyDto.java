@@ -1,5 +1,6 @@
 package com.haritsaini.dtos;
 
+import io.micronaut.serde.annotation.Serdeable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Serdeable
 public class PropertyDto {
 
     private Integer id;

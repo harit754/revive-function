@@ -6,13 +6,15 @@ import java.nio.charset.StandardCharsets;
 import io.micronaut.json.JsonMapper;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import io.micronaut.serde.ObjectMapper;
 import jakarta.inject.Inject;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class FunctionRequestHandler extends MicronautRequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
     @Inject
-    JsonMapper objectMapper;
+    ObjectMapper objectMapper;
 
     @Override
     public APIGatewayProxyResponseEvent execute(APIGatewayProxyRequestEvent input) {
@@ -31,7 +33,7 @@ public class FunctionRequestHandler extends MicronautRequestHandler<APIGatewayPr
                     .refId("GGHU7889")
                     .build();
 
-            String json = new String(objectMapper.writeValueAsBytes(List.of(propertyDto2,propertyDto)));
+            String json = objectMapper.writeValueAsString(Map.of("properties",List.of(propertyDto2,propertyDto)));
             response.setStatusCode(200);
             response.setBody(json);
         } catch (IOException e) {
